@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         btnPantry = findViewById(R.id.btnPantry);
         btnRecipes = findViewById(R.id.btnRecipes);
 
-        // Navigate to Pantry Management screen when clicked
+        // Navigate to Pantry Management screen when clicked 
         btnPantry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
