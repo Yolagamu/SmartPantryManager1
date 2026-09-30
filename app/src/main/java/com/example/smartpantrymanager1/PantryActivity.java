@@ -73,7 +73,7 @@ public class PantryActivity extends AppCompatActivity {
         Cursor cursor = databaseHelper.getAllPantryItems();
 
         String[] fromColumns = {DatabaseHelper.COLUMN_PANTRY_NAME, DatabaseHelper.COLUMN_PANTRY_QTY};
-        int[] toViews = {android.R.id.text1, android.R.id.text2}; // Standard list layout fields
+        int[] toViews = {android.R.id.text1, android.R.id.text2};
         cursorAdapter = new SimpleCursorAdapter(
                 this,
                 android.R.layout.simple_list_item_2,
