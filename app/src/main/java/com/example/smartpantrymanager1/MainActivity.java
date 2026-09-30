@@ -1,3 +1,4 @@
+
 package com.example.smartpantrymanager1;
 
 import android.content.Intent;
@@ -8,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Declaring the buttons
     Button btnPantry, btnRecipes;
 
     @Override
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         btnPantry = findViewById(R.id.btnPantry);
         btnRecipes = findViewById(R.id.btnRecipes);
 
-        // Navigate to Pantry Management screen when clicked 
+        // Navigate to Pantry Management screen when clicked
         btnPantry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
