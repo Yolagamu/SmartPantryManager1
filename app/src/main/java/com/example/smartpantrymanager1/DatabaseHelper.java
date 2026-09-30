@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_PANTRY = "pantry";
     public static final String TABLE_RECIPES = "recipes";
 
-    // Pantry Columns
+    // Pantry Columns (Note: _id is required for SimpleCursorAdapter)
     public static final String COLUMN_PANTRY_ID = "id";
     public static final String COLUMN_PANTRY_NAME = "name";
     public static final String COLUMN_PANTRY_QTY = "quantity";
@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Recipe Columns
     public static final String COLUMN_RECIPE_ID = "id";
     public static final String COLUMN_RECIPE_NAME = "name";
-    public static final String COLUMN_RECIPE_INGREDIENTS = "ingredients"; // e.g., "pasta, tomato, ground beef"
+    public static final String COLUMN_RECIPE_INGREDIENTS = "ingredients";
     public static final String COLUMN_RECIPE_STEPS = "steps";
 
     public DatabaseHelper(Context context) {
@@ -49,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_RECIPE_STEPS + " TEXT)";
         db.execSQL(createRecipeTable);
 
-        // Seed 15 Recipes (Satisfies the 15-20 recipe requirement)
+        // Seed 15 Recipes for assignment requirement
         seedRecipes(db);
     }
 
@@ -71,9 +71,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    // CRITICAL: Aliasing id as _id prevents SimpleCursorAdapter crashes
     public Cursor getAllPantryItems() {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_PANTRY, null);
+        return db.rawQuery("SELECT id AS _id, name, quantity FROM " + TABLE_PANTRY, null);
     }
 
     public boolean updatePantryItem(int id, String name, int quantity) {
@@ -120,12 +121,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // --- CORE STRICT-MATCHING LOGIC ---
-    // Returns only recipes where EVERY required ingredient is present in the pantry
     public List<String> getStrictMatchedRecipes() {
         List<String> matchedRecipes = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // Get all user pantry items into a list of strings
         List<String> userPantry = new ArrayList<>();
         Cursor cursorPantry = db.rawQuery("SELECT " + COLUMN_PANTRY_NAME + " FROM " + TABLE_PANTRY, null);
         if (cursorPantry.moveToFirst()) {
@@ -135,7 +134,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursorPantry.close();
 
-        // Get all recipes from database
         Cursor cursorRecipes = db.rawQuery("SELECT * FROM " + TABLE_RECIPES, null);
         if (cursorRecipes.moveToFirst()) {
             do {
@@ -148,13 +146,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 for (String ing : requiredIngredients) {
                     String trimmedIng = ing.toLowerCase().trim();
                     if (!userPantry.contains(trimmedIng)) {
-                        canMake = false; // Missing even one ingredient means it fails strict matching
+                        canMake = false;
                         break;
                     }
                 }
 
                 if (canMake && requiredIngredients.length > 0 && !userPantry.isEmpty()) {
-                    matchedRecipes.add(recipeName + " - Ingredients: " + ingredientsStr);
+                    matchedRecipes.add(recipeName + " - Uses: " + ingredientsStr);
                 }
 
             } while (cursorRecipes.moveToNext());
