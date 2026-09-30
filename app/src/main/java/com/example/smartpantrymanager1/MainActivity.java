@@ -1,4 +1,3 @@
-
 package com.example.smartpantrymanager1;
 
 import android.content.Intent;
@@ -9,33 +8,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnPantry, btnRecipes;
+    Button btnManagePantry, btnViewRecipes, btnSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Link UI elements to Java variables
-        btnPantry = findViewById(R.id.btnPantry);
-        btnRecipes = findViewById(R.id.btnRecipes);
+        btnManagePantry = findViewById(R.id.btnManagePantry);
+        btnViewRecipes = findViewById(R.id.btnViewRecipes);
+        btnSettings = findViewById(R.id.btnSettings);
 
-        // Navigate to Pantry Management screen when clicked
-        btnPantry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PantryActivity.class);
-                startActivity(intent);
-            }
+        btnManagePantry.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, PantryActivity.class));
         });
 
-        // Navigate to Recipes screen when clicked
-        btnRecipes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RecipeActivity.class);
-                startActivity(intent);
-            }
+        btnViewRecipes.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, RecipeActivity.class));
+        });
+
+        btnSettings.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         });
     }
 }
