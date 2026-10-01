@@ -2,12 +2,12 @@ package com.example.smartpantrymanager1;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    SwitchCompat switchAlerts;
+    Switch switchAlerts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
