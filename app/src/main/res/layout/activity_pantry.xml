@@ -3,34 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="16dp"
+    android:background="#121212">
 
     <EditText
         android:id="@+id/etItemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Item Name"
+        android:hint="Enter Item Name (e.g. tomato)"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#AAAAAA"
         android:inputType="text"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginBottom="8dp"/>
 
     <EditText
         android:id="@+id/etQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Quantity"
+        android:hint="Enter Quantity (e.g. 3)"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#AAAAAA"
         android:inputType="number"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="12dp"/>
 
     <Button
-        android:id="@+id/btnAddItem"
+        android:id="@+id/btnAddPantry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add to Pantry"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="16dp"/>
 
     <ListView
         android:id="@+id/listViewPantry"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
