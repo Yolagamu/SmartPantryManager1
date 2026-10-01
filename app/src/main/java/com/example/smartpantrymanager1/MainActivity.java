@@ -2,33 +2,57 @@ package com.example.smartpantrymanager1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnManagePantry, btnViewRecipes, btnSettings;
+    private Button btnManagePantry;
+    private Button btnViewRecipes;
+    private Button btnSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         btnManagePantry = findViewById(R.id.btnManagePantry);
         btnViewRecipes = findViewById(R.id.btnViewRecipes);
         btnSettings = findViewById(R.id.btnSettings);
 
-        btnManagePantry.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, PantryActivity.class));
+        btnManagePantry.setOnClickListener(view -> {
+
+            Intent intent =
+                    new Intent(
+                            MainActivity.this,
+                            PantryActivity.class
+                    );
+
+            startActivity(intent);
         });
 
-        btnViewRecipes.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, RecipeActivity.class));
+        btnViewRecipes.setOnClickListener(view -> {
+
+            Intent intent =
+                    new Intent(
+                            MainActivity.this,
+                            AllRecipesActivity.class
+                    );
+
+            startActivity(intent);
         });
 
-        btnSettings.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+        btnSettings.setOnClickListener(view -> {
+
+            Intent intent =
+                    new Intent(
+                            MainActivity.this,
+                            SettingsActivity.class
+                    );
+
+            startActivity(intent);
         });
     }
 }

@@ -3,39 +3,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#121212">
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Pantry"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
 
     <EditText
         android:id="@+id/etItemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Item Name (e.g. tomato)"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#AAAAAA"
+        android:hint="Ingredient name"
         android:inputType="text"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp" />
 
     <EditText
         android:id="@+id/etQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Quantity (e.g. 3)"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#AAAAAA"
+        android:hint="Quantity"
         android:inputType="number"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/etUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Unit (kg, pieces, cups)"
+        android:inputType="text"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/etExpiryDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Expiry date (optional)"
+        android:inputType="text"
+        android:layout_marginBottom="12dp" />
 
     <Button
         android:id="@+id/btnAddPantry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add to Pantry"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 
     <ListView
         android:id="@+id/listViewPantry"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>

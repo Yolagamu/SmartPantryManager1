@@ -3,14 +3,23 @@ package com.example.smartpantrymanager1;
 import java.io.Serializable;
 
 public class RecipeModel implements Serializable {
+
+    private int id;
     private String name;
     private String ingredients;
-    private String steps;
+    private String instructions;
 
-    public RecipeModel(String name, String ingredients, String steps) {
+    public RecipeModel(int id, String name, String ingredients,
+                       String instructions) {
+
+        this.id = id;
         this.name = name;
         this.ingredients = ingredients;
-        this.steps = steps;
+        this.instructions = instructions;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -21,7 +30,7 @@ public class RecipeModel implements Serializable {
         return ingredients;
     }
 
-    public String getSteps() {
-        return steps;
+    public String getInstructions() {
+        return instructions;
     }
 }
